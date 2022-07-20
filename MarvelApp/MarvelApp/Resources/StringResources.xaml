@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <x:String x:Key="Pages">Pages: </x:String>
+    <x:String x:Key="Summary">Summary</x:String>
+    <x:String x:Key="MainTitle">New and on sale comics</x:String>
+    <x:String x:Key="MainSubtitle">Welcome to the world's greatest comics!</x:String>
+    <x:String x:Key="MainImage">https://terrigen-cdn-dev.marvel.com/content/prod/1x/mu_starter-1800x1800.jpg</x:String>
+    <x:String x:Key="FindOutMore">Find out more</x:String>
+    <x:String x:Key="SortComics">Sort Comics by</x:String>
+    <x:String x:Key="Title">Title</x:String>
+    <x:String x:Key="OnSaleNow">On Sale Now</x:String>
+    <x:String x:Key="FOC">Final Order Cutoff</x:String>
+    <x:String x:Key="RecordsLimited">Records Limited by</x:String>
+    <x:String x:Key="Limit20">20</x:String>
+    <x:String x:Key="Limit40">40</x:String>
+    <x:String x:Key="Limit60">60</x:String>
+    <x:String x:Key="WebsiteMarvel">https://www.marvel.com/</x:String>
+    <x:String x:Key="WishList">Wish List</x:String>
+    <x:String x:Key="SortGroupName">sort</x:String>
+    <x:String x:Key="LimitGroupName">limit</x:String>
+
+</ResourceDictionary>

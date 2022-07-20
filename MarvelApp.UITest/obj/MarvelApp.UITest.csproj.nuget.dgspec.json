@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\hbittencourt\\source\\repos\\MarvelApp\\MarvelApp.UITest\\MarvelApp.UITest.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hbittencourt\\source\\repos\\MarvelApp\\MarvelApp.UITest\\MarvelApp.UITest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hbittencourt\\source\\repos\\MarvelApp\\MarvelApp.UITest\\MarvelApp.UITest.csproj",
+        "projectName": "MarvelApp.UITest",
+        "projectPath": "C:\\Users\\hbittencourt\\source\\repos\\MarvelApp\\MarvelApp.UITest\\MarvelApp.UITest.csproj",
+        "packagesPath": "C:\\Users\\hbittencourt\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hbittencourt\\source\\repos\\MarvelApp\\MarvelApp.UITest\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\hbittencourt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net461"
+        ],
+        "sources": {
+          "C:\\NuGetLocal": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://b2b-informatica.pkgs.visualstudio.com/_packaging/FIT/nuget/v3/index.json": {},
+          "https://nuget.devexpress.com/Kr3Jlr44a2pztPHAR9umcE5TEEkjHIWTUDABDQzdrxtqijH2We/api": {}
+        },
+        "frameworks": {
+          "net461": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net461": {
+          "dependencies": {
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "Xamarin.UITest": {
+              "target": "Package",
+              "version": "[3.2.8, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

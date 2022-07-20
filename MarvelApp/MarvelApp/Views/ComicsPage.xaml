@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarvelApp.Views.ComicsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:MarvelApp.ViewModels"  
+             xmlns:model="clr-namespace:MarvelApp.Models"  
+             x:Name="BrowseComicsPage">
+
+    <StackLayout>
+        <SearchBar Text="{Binding SearchText}" SearchCommand="{Binding SearchCommand}"/>
+        <RefreshView x:DataType="local:ComicsViewModel" Command="{Binding LoadComicsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView 
+                AutomationId="ComicsCollectionView"
+                ItemsSource="{Binding Comics}"
+                SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" x:DataType="model:Comic">
+                            <StackLayout Orientation="Vertical">
+                                <Image AutomationId="ComicImage" Source="{Binding Image}" Aspect="AspectFit" HeightRequest="200" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label
+                                    FontSize="Small"
+                                    Text="{Binding Title}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="Small" 
+                                    Text="{Binding Price, StringFormat='{0:C2}'}"
+                                    VerticalOptions="Start"/>
+                            </StackLayout>
+                            
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ComicsViewModel}}, Path=ComicTapped}"		
+                                CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+</ContentPage>

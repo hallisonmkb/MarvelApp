@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarvelApp.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#F0131E</Color>
+            <Color x:Key="TextPrimary">White</Color>
+            <Color x:Key="BorderPrimary">White</Color>
+            <Color x:Key="BackPrimary">#2d2d2d</Color>
+            <Color x:Key="DisabledButton">#95FFFFFF</Color>
+            <Color x:Key="BackRadioButton">#95FFFFFF</Color>
+
+            <ResourceDictionary Source="Resources/StringResources.xaml"/>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource DisabledButton}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            
+            <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{StaticResource BackPrimary}" />
+            </Style>
+            
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}"></Setter>
+            </Style>
+
+            <Style TargetType="SearchBar">
+                <Setter Property="TextColor" Value="{StaticResource BackPrimary}"></Setter>
+                <Setter Property="BackgroundColor" Value="{StaticResource DisabledButton}"></Setter>
+            </Style>
+        </ResourceDictionary>        
+    </Application.Resources>
+</Application>

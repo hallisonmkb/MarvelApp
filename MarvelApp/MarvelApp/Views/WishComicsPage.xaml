@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarvelApp.Views.WishComicsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:MarvelApp.ViewModels"  
+             xmlns:model="clr-namespace:MarvelApp.Models"  
+             x:Name="BrowseWishComicsPage">
+
+    <StackLayout>
+        <RefreshView x:DataType="local:WishComicsViewModel" Command="{Binding LoadWishesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView 
+                ItemsSource="{Binding Wishes}"
+                SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" x:DataType="model:WishComic">
+                                <StackLayout Orientation="Vertical">
+                                    <Image Source="{Binding Image}" Aspect="AspectFit" HeightRequest="200" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label
+                                        FontSize="Small"
+                                        Text="{Binding Title}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        FontSize="Small" 
+                                        Text="{Binding Price, StringFormat='{0:C2}'}"
+                                        VerticalOptions="Start"/>
+                            </StackLayout>
+                            
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:WishComicsViewModel}}, Path=WishTapped}"		
+                                CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+</ContentPage>

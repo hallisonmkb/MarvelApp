@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarvelApp.Views.SettingsPage"
+             Title="Settings">
+
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="RadioButtonTemplate">
+            <Frame BorderColor="{StaticResource BackPrimary}"
+                   BackgroundColor="{StaticResource BackRadioButton}"
+                   HasShadow="False"
+                   HeightRequest="100"
+                   WidthRequest="100"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   CornerRadius="8"
+                   Padding="0">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor"
+                                            Value="{StaticResource Primary}" />
+                                    <Setter Property="BackgroundColor"
+                                            Value="{StaticResource Primary}" />
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor"
+                                            Value="{StaticResource BackPrimary}" />
+                                    <Setter Property="BackgroundColor"
+                                            Value="{StaticResource BackRadioButton}" />
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="0" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <Grid Margin="4"
+                      WidthRequest="100">
+                    <Grid WidthRequest="18"
+                          HeightRequest="18"
+                          HorizontalOptions="End"
+                          VerticalOptions="Start">
+                        <Ellipse Stroke="{StaticResource Primary}"
+                                 Fill="{StaticResource BackRadioButton}"
+                                 WidthRequest="16"
+                                 HeightRequest="16"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                        <Ellipse x:Name="check"
+                                 Fill="{StaticResource Primary}"
+                                 WidthRequest="8"
+                                 HeightRequest="8"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                    </Grid>
+                    <ContentPresenter />
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="ControlTemplate" Value="{StaticResource RadioButtonTemplate}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <Label Margin="0,10,0,0" Text="{StaticResource SortComics}" />
+                <StackLayout RadioButtonGroup.GroupName="{StaticResource SortGroupName}" Orientation="Horizontal">
+                    <RadioButton Value="Title" IsChecked="{Binding IsOrderByTitle}">
+                        <RadioButton.Content>
+                            <StackLayout>
+                                <Image Source="format_text_outline.png"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{StaticResource Title}" HorizontalOptions="Center" VerticalOptions="End" />
+                            </StackLayout>
+                        </RadioButton.Content>
+                    </RadioButton>
+                    <RadioButton Value="{StaticResource OnSaleNow}" IsChecked="{Binding IsOrderByOnSaleDate}">
+                        <RadioButton.Content>
+                            <StackLayout>
+                                <Image Source="sale_outline.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{StaticResource OnSaleNow}" HorizontalOptions="Center" VerticalOptions="End" />
+                            </StackLayout>
+                        </RadioButton.Content>
+                    </RadioButton>
+                    <RadioButton Value="{StaticResource FOC}" IsChecked="{Binding IsOrderByFocDate}">
+                        <RadioButton.Content>
+                            <StackLayout>
+                                <Image Source="store_alert.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{StaticResource FOC}" HorizontalOptions="Center" VerticalOptions="End" />
+                            </StackLayout>
+                        </RadioButton.Content>
+                    </RadioButton>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <Label Margin="0,10,0,0" Text="{StaticResource RecordsLimited}" />
+                <StackLayout RadioButtonGroup.GroupName="{StaticResource LimitGroupName}" Orientation="Horizontal">
+                    <RadioButton Value="{StaticResource Limit20}" IsChecked="{Binding IsLimitRecordBy20}">
+                        <RadioButton.Content>
+                            <StackLayout>
+                                <Image Source="roman_numeral_1.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{StaticResource Limit20}" HorizontalOptions="Center" VerticalOptions="End" />
+                            </StackLayout>
+                        </RadioButton.Content>
+                    </RadioButton>
+                    <RadioButton Value="{StaticResource Limit40}" IsChecked="{Binding IsLimitRecordBy40}">
+                        <RadioButton.Content>
+                            <StackLayout>
+                                <Image Source="roman_numeral_2.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{StaticResource Limit40}" HorizontalOptions="Center" VerticalOptions="End" />
+                            </StackLayout>
+                        </RadioButton.Content>
+                    </RadioButton>
+                    <RadioButton Value="{StaticResource Limit60}" IsChecked="{Binding IsLimitRecordBy60}">
+                        <RadioButton.Content>
+                            <StackLayout>
+                                <Image Source="roman_numeral_3.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                                <Label Text="{StaticResource Limit60}" HorizontalOptions="Center" VerticalOptions="End" />
+                            </StackLayout>
+                        </RadioButton.Content>
+                    </RadioButton>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

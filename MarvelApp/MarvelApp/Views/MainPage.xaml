@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarvelApp.Views.MainPage"
+             xmlns:model="clr-namespace:MarvelApp.Models" 
+             xmlns:local="clr-namespace:MarvelApp.ViewModels"  
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Padding="5">
+            <Frame CornerRadius="100" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                <Image Source="{StaticResource MainImage}" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout Grid.Row="1" Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <Label Text="{StaticResource MainTitle}" FontSize="Title"/>
+                <Label AutomationId="MainSubtitleLabel" Text="{StaticResource MainSubtitle}" FontSize="16"/>
+
+                <RefreshView x:DataType="local:MainViewModel" Command="{Binding LoadNewComicsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <CollectionView 
+                        ItemsSource="{Binding Comics}"
+                        SelectionMode="None"
+                        HeightRequest="100">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Horizontal" Span="1" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="10" x:DataType="model:Comic">
+                                    <Image AutomationId="OnSaleComicImage" Source="{Binding Image}" Aspect="AspectFit" HeightRequest="200" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainViewModel}}, Path=ComicTapped}"		
+                                            CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{StaticResource FindOutMore}" FontSize="16"/>
+                    <Label Text="{StaticResource WebsiteMarvel}" FontSize="16" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <Button Margin="0,10,0,0" Text="{StaticResource FindOutMore}"
+                        Command="{Binding OpenWebCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
